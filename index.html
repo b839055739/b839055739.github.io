@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f7f4">
+  <title>智选集 · AI 数字工具商店</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="site-header">
+      <a class="brand" href="#store" aria-label="智选集首页">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span><strong>智选集</strong><small>AI TOOL MARKET</small></span>
+      </a>
+      <nav class="main-nav" aria-label="主导航">
+        <button class="nav-link active" data-view="store">精选工具</button>
+        <button class="nav-link" data-view="orders">我的订单</button>
+        <button class="nav-link" data-view="admin">管理后台</button>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" id="searchToggle" title="搜索" aria-label="搜索">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+        </button>
+        <button class="cart-button" id="cartToggle" aria-label="打开购物车">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L21 7H6"></path><circle cx="10" cy="20" r="1"></circle><circle cx="18" cy="20" r="1"></circle></svg>
+          <span>购物车</span><b id="cartCount">0</b>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="view active" id="storeView">
+        <div class="store-intro">
+          <div>
+            <p class="eyebrow">CURATED AI ESSENTIALS · 2026</p>
+            <h1>把好用的 AI 工具，<br><em>收进一个清单。</em></h1>
+          </div>
+          <div class="intro-side">
+            <p>精选创作、办公与开发工具。价格与库存持续更新，购买后由订单中心完成数字权益交付。</p>
+            <div class="live-status"><span></span><b>实时同步中</b><small id="lastSync">正在连接</small></div>
+          </div>
+        </div>
+
+        <div class="catalog-toolbar">
+          <div class="category-tabs" id="categoryTabs"></div>
+          <label class="search-box" id="searchBox">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+            <input id="searchInput" type="search" placeholder="搜索工具">
+          </label>
+        </div>
+
+        <div class="product-grid" id="productGrid" aria-live="polite"></div>
+        <div class="empty-state hidden" id="emptyProducts"><b>没有匹配的商品</b><p>尝试切换分类或清除搜索内容。</p></div>
+      </section>
+
+      <section class="view page-view" id="ordersView">
+        <div class="page-heading">
+          <div><p class="eyebrow">ORDER CENTER</p><h2>我的订单</h2></div>
+          <p>数字商品交付记录与兑换信息</p>
+        </div>
+        <div class="order-lookup">
+          <label><span>订单号</span><input id="orderLookupInput" placeholder="例如 ZX2608210001"></label>
+          <button class="primary-button" id="orderLookupButton">查询订单</button>
+        </div>
+        <div id="ordersList" class="orders-list"></div>
+      </section>
+
+      <section class="view admin-view" id="adminView">
+        <div class="admin-topbar">
+          <div><p class="eyebrow">CONTROL DESK</p><h2>经营管理台</h2></div>
+          <div class="admin-actions"><span id="adminSyncLabel">等待同步</span><button class="primary-button compact" id="syncButton"><svg viewBox="0 0 24 24"><path d="M20 7h-5V2"></path><path d="M4 17h5v5"></path><path d="M5.8 9A7 7 0 0 1 18.4 6L20 7"></path><path d="M18.2 15A7 7 0 0 1 5.6 18L4 17"></path></svg>立即同步</button></div>
+        </div>
+        <div class="metric-grid" id="metricGrid"></div>
+        <div class="admin-layout">
+          <div class="admin-main">
+            <section class="panel">
+              <div class="panel-heading product-panel-heading"><div><h3>商品与定价</h3><p>新导入商品默认下架，设置加价后再开启上架</p></div><div class="admin-filters"><input id="adminProductSearch" type="search" placeholder="搜索商品"><select id="adminSupplierFilter" aria-label="筛选供应商"><option value="all">全部货源</option></select><span class="count-pill" id="adminProductCount">0 项</span></div></div>
+              <div class="table-wrap"><table><thead><tr><th>商品</th><th>成本 / 售价</th><th>库存</th><th>加价规则</th><th>上架</th><th></th></tr></thead><tbody id="adminProductRows"></tbody></table></div>
+            </section>
+            <section class="panel">
+              <div class="panel-heading"><div><h3>最近订单</h3><p>本地沙盒订单和交付状态</p></div></div>
+              <div id="adminOrders" class="admin-orders"></div>
+            </section>
+          </div>
+          <aside class="admin-side">
+            <section class="panel supplier-panel">
+              <div class="panel-heading"><div><h3>供应商连接</h3><p>公开商品接口实时同步</p></div></div>
+              <div id="supplierList"></div>
+            </section>
+            <section class="panel activity-panel">
+              <div class="panel-heading"><div><h3>系统动态</h3></div></div>
+              <div id="activityList"></div>
+            </section>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="购物车">
+    <div class="drawer-header"><div><p class="eyebrow">YOUR SELECTION</p><h2>购物车</h2></div><button class="icon-button" id="cartClose" aria-label="关闭"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"></path></svg></button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="cart-total"><span>合计</span><strong id="cartTotal">¥0.00</strong></div>
+      <button class="primary-button full" id="checkoutButton">去结算</button>
+      <p>结算前会再次校验价格与库存</p>
+    </div>
+  </aside>
+
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+  <section class="modal checkout-modal" id="checkoutModal" role="dialog" aria-modal="true" aria-label="扫码支付">
+    <button class="icon-button modal-close" data-close-modal aria-label="关闭"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"></path></svg></button>
+    <p class="eyebrow">SCAN TO PAY</p><h2>扫码支付</h2>
+    <p class="modal-lead">核对订单后按应付金额完成付款。</p>
+    <div class="checkout-payment-layout">
+      <div class="checkout-details">
+        <div class="checkout-summary" id="checkoutSummary"></div>
+        <label class="form-field"><span>接收邮箱</span><input id="customerEmail" type="email" placeholder="name@example.com" autocomplete="email"></label>
+        <div class="payment-note"><b>付款提示</b><span>请支付右侧显示的订单金额，付款后提交订单。</span></div>
+      </div>
+      <div class="payment-panel">
+        <div class="payment-amount"><span>应付金额</span><strong id="checkoutTotal">¥0.00</strong></div>
+        <div class="payment-qr-frame"><img src="./assets/store-payment-qr.svg" alt="店铺收款二维码" width="1170" height="1170"></div>
+        <div class="payment-ready"><span></span><b>收款码已就绪</b></div>
+      </div>
+    </div>
+    <button class="primary-button full" id="placeOrderButton"><span data-button-label>支付完成，提交订单</span></button>
+  </section>
+
+  <section class="modal order-success" id="successModal" role="dialog" aria-modal="true" aria-label="订单已交付">
+    <div class="success-mark"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"></path></svg></div>
+    <p class="eyebrow">FULFILLED</p><h2>订单已交付</h2>
+    <p class="modal-lead">订单已提交，兑换信息已安全写入订单。</p>
+    <div id="successOrder"></div>
+    <button class="primary-button full" id="viewOrderButton">查看订单详情</button>
+  </section>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+  <script>window.__STATIC_MODE__ = true;</script>
+  <script src="./app.js"></script>
+</body>
+</html>
+
