@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Zhixuanji store avatar</title>
+  <desc id="desc">A square catalog mark formed by three vertical tool columns.</desc>
+  <rect width="1024" height="1024" fill="#f4f5f1"/>
+  <rect x="54" y="54" width="916" height="916" fill="none" stroke="#dfe3dc" stroke-width="4"/>
+  <rect x="218" y="218" width="588" height="588" fill="#171a18"/>
+  <rect x="246" y="246" width="532" height="532" fill="#f4f5f1"/>
+
+  <rect x="326" y="498" width="82" height="184" fill="#171a18"/>
+  <rect x="471" y="350" width="82" height="332" fill="#1f5e45"/>
+  <rect x="616" y="430" width="82" height="252" fill="#171a18"/>
+
+  <rect x="342" y="526" width="50" height="8" fill="#f4f5f1" opacity="0.8"/>
+  <rect x="487" y="378" width="50" height="8" fill="#f4f5f1" opacity="0.8"/>
+  <rect x="632" y="458" width="50" height="8" fill="#f4f5f1" opacity="0.8"/>
+  <rect x="302" y="706" width="420" height="18" fill="#171a18"/>
+
+  <circle cx="748" cy="276" r="18" fill="#35a269"/>
+</svg>

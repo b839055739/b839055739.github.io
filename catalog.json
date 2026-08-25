@@ -1,0 +1,57 @@
+{
+  "settings": {
+    "storeName": "智选集",
+    "storeSubtitle": "AI 数字工具商店",
+    "currency": "CNY",
+    "autoSyncSeconds": 60
+  },
+  "products": [
+    {
+      "id": "prd-icow-source-ce93f0847e7f",
+      "title": "（自用推荐）2006-2018随机年份 | 邮箱可用 | 2fa登录 | 已解除敏感设置中文",
+      "category": "账号服务",
+      "description": "账号服务数字商品，价格与库存为本次发布时快照。",
+      "price": 40.98,
+      "stock": 9999,
+      "stockUnlimited": true,
+      "stockStatus": "in_stock",
+      "featured": false,
+      "visual": "writing",
+      "image": "./assets/products/prd-icow-source-ce93f0847e7f.png",
+      "updatedAt": "2026-08-24T13:32:48.167Z"
+    },
+    {
+      "id": "prd-icow-source-7c74ed172e27",
+      "title": "[成品号]🇺🇸美国 1 API链接 半年~1年老号 稳定促销🔥🔥",
+      "category": "账号服务",
+      "description": "账号服务数字商品，价格与库存为本次发布时快照。",
+      "price": 52.25,
+      "stock": 2901,
+      "stockUnlimited": false,
+      "stockStatus": "in_stock",
+      "featured": false,
+      "visual": "code",
+      "image": "./assets/products/prd-icow-source-7c74ed172e27.jpg",
+      "updatedAt": "2026-08-24T13:32:48.167Z"
+    },
+    {
+      "id": "prd-ldxp-source-1-ff7fef2d79fc",
+      "title": "精品！GP-T PLUS  五日卡成品号  大部分已接码",
+      "category": "AI 服务",
+      "description": "AI 服务数字商品，价格与库存为本次发布时快照。",
+      "price": 50,
+      "stock": 0,
+      "stockUnlimited": true,
+      "stockStatus": "out_of_stock",
+      "featured": false,
+      "visual": "writing",
+      "image": "./assets/products/prd-ldxp-source-1-ff7fef2d79fc.png",
+      "updatedAt": "2026-08-24T13:32:48.167Z"
+    }
+  ],
+  "orders": [],
+  "sync": {
+    "lastSyncAt": "2026-08-24T13:32:48.167Z",
+    "intervalSeconds": 60
+  }
+}
